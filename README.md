@@ -37,9 +37,9 @@ cp .env.example .env
 docker compose up --build
 ```
 
-- Frontend: http://localhost:3000
-- API: http://localhost:4000/api/v1
-- Swagger docs: http://localhost:4000/api/v1/docs
+- Frontend: http://localhost:5183
+- API: http://localhost:3010/api/v1
+- Swagger docs: http://localhost:3010/api/v1/docs
 
 ## Quick start (local, without Docker)
 
@@ -52,13 +52,13 @@ cp .env.example .env   # point DATABASE_URL at your MariaDB instance
 npm install
 npm run prisma:migrate         # creates schema
 npm run prisma:seed            # seeds roles + a super admin + sample catalog
-npm run start:dev              # http://localhost:4000/api/v1
+npm run start:dev              # http://localhost:3010/api/v1
 
 # Frontend (separate terminal)
 cd frontend
 cp .env.example .env.local
 npm install
-npm run dev                    # http://localhost:3000
+npm run dev                    # http://localhost:5183
 ```
 
 Default seeded admin login (change immediately in production):

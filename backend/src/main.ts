@@ -15,7 +15,7 @@ import { TransformInterceptor } from './common/interceptors/transform.intercepto
  */
 export function configureApp(app: INestApplication, options: { apiPrefix?: string; corsOrigin?: string } = {}) {
   const apiPrefix = options.apiPrefix ?? process.env.API_PREFIX ?? 'api/v1';
-  const corsOrigin = options.corsOrigin ?? process.env.CORS_ORIGIN ?? 'http://localhost:3000';
+  const corsOrigin = options.corsOrigin ?? process.env.CORS_ORIGIN ?? 'http://localhost:5183';
 
   if (process.env.TRUST_PROXY === 'true') {
     app.getHttpAdapter().getInstance().set('trust proxy', 1);
@@ -50,7 +50,7 @@ async function bootstrap() {
     logger: ['error', 'warn', 'log'],
   });
 
-  const configPort = process.env.PORT ? parseInt(process.env.PORT, 10) : 4000;
+  const configPort = process.env.PORT ? parseInt(process.env.PORT, 10) : 3010;
   const { apiPrefix } = configureApp(app);
 
   const swaggerConfig = new DocumentBuilder()

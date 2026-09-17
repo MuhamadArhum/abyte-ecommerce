@@ -12,5 +12,5 @@ COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 RUN npm install --omit=dev
-EXPOSE 3000
+EXPOSE 5183
 CMD ["npm", "start"]

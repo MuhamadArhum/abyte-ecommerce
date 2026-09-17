@@ -15,5 +15,5 @@ COPY prisma ./prisma
 RUN npm install --omit=dev
 COPY --from=builder /app/dist ./dist
 RUN npx prisma generate
-EXPOSE 4000
+EXPOSE 3010
 CMD ["node", "dist/main"]

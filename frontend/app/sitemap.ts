@@ -3,7 +3,7 @@ import { serverFetch } from '@/lib/server-api';
 import type { PaginatedResponse, Product, Category } from '@/types';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:5183';
 
   const [products, categories] = await Promise.all([
     serverFetch<PaginatedResponse<Product>>('/products?limit=100', 3600),

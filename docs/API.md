@@ -3,7 +3,7 @@
 Full interactive documentation is generated at runtime via Swagger:
 **`GET /api/v1/docs`**.
 
-Base URL: `http://localhost:4000/api/v1` (configurable via `API_PREFIX`).
+Base URL: `http://localhost:3010/api/v1` (configurable via `API_PREFIX`).
 
 All responses are wrapped as `{ "success": true, "data": ... }` on success,
 or `{ "success": false, "statusCode", "error", "message", "path", "timestamp" }`

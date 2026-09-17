@@ -30,7 +30,7 @@ describe('Storefront e2e flow', () => {
     }).compile();
 
     app = moduleFixture.createNestApplication();
-    configureApp(app, { apiPrefix: 'api/v1', corsOrigin: 'http://localhost:3000' });
+    configureApp(app, { apiPrefix: 'api/v1', corsOrigin: 'http://localhost:5183' });
     await app.init();
 
     prisma = app.get(PrismaService);

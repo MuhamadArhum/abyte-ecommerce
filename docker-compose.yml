@@ -30,9 +30,9 @@ services:
     environment:
       DATABASE_URL: mysql://${MARIADB_USER:-abyte}:${MARIADB_PASSWORD:-abyte_password}@mariadb:3306/${MARIADB_DATABASE:-abyte_ecommerce}
       NODE_ENV: production
-      PORT: 4000
+      PORT: 3010
       API_PREFIX: api/v1
-      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:3000}
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:5183}
       JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET}
       JWT_ACCESS_EXPIRES_IN: ${JWT_ACCESS_EXPIRES_IN:-15m}
       JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET}
@@ -41,7 +41,7 @@ services:
       THROTTLE_TTL: ${THROTTLE_TTL:-60}
       THROTTLE_LIMIT: ${THROTTLE_LIMIT:-100}
     ports:
-      - "4000:4000"
+      - "3010:3010"
     command: sh -c "npx prisma migrate deploy && node dist/main"
 
   frontend:
@@ -52,9 +52,9 @@ services:
     depends_on:
       - backend
     environment:
-      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:4000/api/v1}
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:3010/api/v1}
     ports:
-      - "3000:3000"
+      - "5183:5183"
 
 volumes:
   mariadb_data:

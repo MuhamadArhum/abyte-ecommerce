@@ -36,7 +36,7 @@ Edit `.env`:
 
 - `DATABASE_URL` — MariaDB connection string
 - `JWT_ACCESS_SECRET` / `JWT_REFRESH_SECRET` — generate with `openssl rand -hex 64`
-- `CORS_ORIGIN` — the frontend origin (e.g. `http://localhost:3000`)
+- `CORS_ORIGIN` — the frontend origin (e.g. `http://localhost:5183`)
 
 ```bash
 npm install
@@ -45,7 +45,7 @@ npm run prisma:seed          # seeds roles, permissions, super admin, sample cat
 npm run start:dev
 ```
 
-The API listens on `http://localhost:4000/api/v1` by default, with Swagger
+The API listens on `http://localhost:3010/api/v1` by default, with Swagger
 docs at `/api/v1/docs`.
 
 ## 3. Frontend
@@ -57,14 +57,14 @@ npm install
 npm run dev
 ```
 
-The storefront runs on `http://localhost:3000`. `NEXT_PUBLIC_API_URL` must
-point at the backend's API prefix (`http://localhost:4000/api/v1`).
+The storefront runs on `http://localhost:5183`. `NEXT_PUBLIC_API_URL` must
+point at the backend's API prefix (`http://localhost:3010/api/v1`).
 
 ## 4. Verifying the install
 
-1. Visit `http://localhost:3000` — homepage should load (empty catalog sections
+1. Visit `http://localhost:5183` — homepage should load (empty catalog sections
    until you seed or add products).
-2. Visit `http://localhost:4000/api/v1/docs` — Swagger UI should list all endpoints.
+2. Visit `http://localhost:3010/api/v1/docs` — Swagger UI should list all endpoints.
 3. Log in to `/account/login` with the seeded super admin, then visit `/admin`
    to confirm the dashboard loads.
 4. Create a category, brand, and product from `/admin/products/new`, then confirm
