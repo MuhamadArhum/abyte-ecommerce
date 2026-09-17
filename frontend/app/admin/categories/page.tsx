@@ -67,12 +67,12 @@ export default function AdminCategoriesPage() {
 
       <form onSubmit={handleCreate} className="card mb-6 flex flex-wrap items-end gap-3 p-4">
         <div>
-          <label className="label">Name</label>
-          <input required className="input" value={name} onChange={(e) => setName(e.target.value)} />
+          <label className="label" htmlFor="category-name">Name</label>
+          <input id="category-name" required className="input" value={name} onChange={(e) => setName(e.target.value)} />
         </div>
         <div>
-          <label className="label">Parent category</label>
-          <select className="input" value={parentId} onChange={(e) => setParentId(e.target.value)}>
+          <label className="label" htmlFor="category-parent">Parent category</label>
+          <select id="category-parent" className="input" value={parentId} onChange={(e) => setParentId(e.target.value)}>
             <option value="">None</option>
             {categories.map((c) => (
               <option key={c.id} value={c.id}>

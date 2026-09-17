@@ -7,11 +7,12 @@ import AddToCartPanel from '@/components/AddToCartPanel';
 import ProductCard from '@/components/ProductCard';
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateMetadata({ params }: Props) {
-  const product = await serverFetch<Product>(`/products/${params.slug}`);
+  const { slug } = await params;
+  const product = await serverFetch<Product>(`/products/${slug}`);
   if (!product) return { title: 'Product not found' };
   return {
     title: product.name,
@@ -20,11 +21,12 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function ProductDetailPage({ params }: Props) {
-  const product = await serverFetch<Product>(`/products/${params.slug}`, 30);
+  const { slug } = await params;
+  const product = await serverFetch<Product>(`/products/${slug}`, 30);
   if (!product) notFound();
 
   const [related, reviewsResult] = await Promise.all([
-    serverFetch<Product[]>(`/products/${params.slug}/related`, 60),
+    serverFetch<Product[]>(`/products/${slug}/related`, 60),
     serverFetch<PaginatedResponse<Review>>(`/reviews/product/${product.id}`, 30),
   ]);
 

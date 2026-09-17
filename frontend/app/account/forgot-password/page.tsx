@@ -23,8 +23,8 @@ export default function ForgotPasswordPage() {
       ) : (
         <form onSubmit={handleSubmit} className="card space-y-4 p-6">
           <div>
-            <label className="label">Email</label>
-            <input type="email" required className="input" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <label className="label" htmlFor="email">Email</label>
+            <input id="email" type="email" required className="input" value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
           <button type="submit" className="btn-primary w-full">
             Send reset link

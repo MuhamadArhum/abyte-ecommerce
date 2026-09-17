@@ -47,12 +47,13 @@ function LoginForm() {
       <form onSubmit={handleSubmit} className="card space-y-4 p-6">
         {error && <p className="text-sm text-red-600">{error}</p>}
         <div>
-          <label className="label">Email</label>
-          <input type="email" required className="input" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <label className="label" htmlFor="email">Email</label>
+          <input id="email" type="email" required className="input" value={email} onChange={(e) => setEmail(e.target.value)} />
         </div>
         <div>
-          <label className="label">Password</label>
+          <label className="label" htmlFor="password">Password</label>
           <input
+            id="password"
             type="password"
             required
             className="input"

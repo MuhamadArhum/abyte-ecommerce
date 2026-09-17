@@ -21,7 +21,6 @@ import { AuditLogsModule } from './audit-logs/audit-logs.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { JwtAuthGuard } from './common/guards/jwt-auth.guard';
 import { RolesGuard } from './common/guards/roles.guard';
-import { APP_FILTER } from '@nestjs/core';
 
 @Module({
   imports: [

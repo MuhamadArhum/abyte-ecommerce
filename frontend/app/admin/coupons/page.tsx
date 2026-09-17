@@ -64,31 +64,31 @@ export default function AdminCouponsPage() {
 
       <form onSubmit={handleCreate} className="card mb-6 grid grid-cols-2 gap-3 p-4 sm:grid-cols-5">
         <div>
-          <label className="label">Code</label>
-          <input required className="input" value={code} onChange={(e) => setCode(e.target.value)} />
+          <label className="label" htmlFor="coupon-code">Code</label>
+          <input id="coupon-code" required className="input" value={code} onChange={(e) => setCode(e.target.value)} />
         </div>
         <div>
-          <label className="label">Type</label>
-          <select className="input" value={type} onChange={(e) => setType(e.target.value as any)}>
+          <label className="label" htmlFor="coupon-type">Type</label>
+          <select id="coupon-type" className="input" value={type} onChange={(e) => setType(e.target.value as any)}>
             <option value="PERCENTAGE">Percentage</option>
             <option value="FIXED">Fixed amount</option>
           </select>
         </div>
         <div>
-          <label className="label">Value</label>
-          <input type="number" min={0} className="input" value={value} onChange={(e) => setValue(e.target.value)} />
+          <label className="label" htmlFor="coupon-value">Value</label>
+          <input id="coupon-value" type="number" min={0} className="input" value={value} onChange={(e) => setValue(e.target.value)} />
         </div>
         <div>
-          <label className="label">Min order</label>
-          <input type="number" min={0} className="input" value={minOrderAmount} onChange={(e) => setMinOrderAmount(e.target.value)} />
+          <label className="label" htmlFor="coupon-minOrder">Min order</label>
+          <input id="coupon-minOrder" type="number" min={0} className="input" value={minOrderAmount} onChange={(e) => setMinOrderAmount(e.target.value)} />
         </div>
         <div>
-          <label className="label">Usage limit</label>
-          <input type="number" min={0} className="input" value={usageLimit} onChange={(e) => setUsageLimit(e.target.value)} />
+          <label className="label" htmlFor="coupon-usageLimit">Usage limit</label>
+          <input id="coupon-usageLimit" type="number" min={0} className="input" value={usageLimit} onChange={(e) => setUsageLimit(e.target.value)} />
         </div>
         <div className="col-span-2">
-          <label className="label">Expires at</label>
-          <input type="date" className="input" value={expiresAt} onChange={(e) => setExpiresAt(e.target.value)} />
+          <label className="label" htmlFor="coupon-expiresAt">Expires at</label>
+          <input id="coupon-expiresAt" type="date" className="input" value={expiresAt} onChange={(e) => setExpiresAt(e.target.value)} />
         </div>
         <div className="col-span-full">
           <button className="btn-primary" type="submit">

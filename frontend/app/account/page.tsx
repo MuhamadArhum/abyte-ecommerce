@@ -47,22 +47,22 @@ export default function ProfilePage() {
         {message && <p className="text-sm text-green-600">{message}</p>}
         {error && <p className="text-sm text-red-600">{error}</p>}
         <div>
-          <label className="label">Email</label>
-          <input className="input bg-gray-50" value={user.email} disabled />
+          <label className="label" htmlFor="profileEmail">Email</label>
+          <input id="profileEmail" className="input bg-gray-50" value={user.email} disabled />
         </div>
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="label">First name</label>
-            <input className="input" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+            <label className="label" htmlFor="profileFirstName">First name</label>
+            <input id="profileFirstName" className="input" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
           </div>
           <div>
-            <label className="label">Last name</label>
-            <input className="input" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+            <label className="label" htmlFor="profileLastName">Last name</label>
+            <input id="profileLastName" className="input" value={lastName} onChange={(e) => setLastName(e.target.value)} />
           </div>
         </div>
         <div>
-          <label className="label">Phone</label>
-          <input className="input" value={phone} onChange={(e) => setPhone(e.target.value)} />
+          <label className="label" htmlFor="profilePhone">Phone</label>
+          <input id="profilePhone" className="input" value={phone} onChange={(e) => setPhone(e.target.value)} />
         </div>
         <button type="submit" className="btn-primary">
           Save changes
@@ -100,8 +100,9 @@ function ChangePasswordForm() {
       {message && <p className="text-sm text-green-600">{message}</p>}
       {error && <p className="text-sm text-red-600">{error}</p>}
       <div>
-        <label className="label">Current password</label>
+        <label className="label" htmlFor="currentPassword">Current password</label>
         <input
+          id="currentPassword"
           type="password"
           required
           className="input"
@@ -110,8 +111,9 @@ function ChangePasswordForm() {
         />
       </div>
       <div>
-        <label className="label">New password</label>
+        <label className="label" htmlFor="newPasswordChange">New password</label>
         <input
+          id="newPasswordChange"
           type="password"
           required
           minLength={8}

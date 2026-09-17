@@ -131,41 +131,41 @@ export default function ProductForm({ product }: { product?: Product }) {
 
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="label">Name</label>
-          <input required className="input" value={name} onChange={(e) => setName(e.target.value)} />
+          <label className="label" htmlFor="prod-name">Name</label>
+          <input id="prod-name" required className="input" value={name} onChange={(e) => setName(e.target.value)} />
         </div>
         <div>
-          <label className="label">SKU</label>
-          <input required className="input" value={sku} onChange={(e) => setSku(e.target.value)} />
+          <label className="label" htmlFor="prod-sku">SKU</label>
+          <input id="prod-sku" required className="input" value={sku} onChange={(e) => setSku(e.target.value)} />
         </div>
       </div>
 
       <div>
-        <label className="label">Description</label>
-        <textarea className="input" rows={4} value={description} onChange={(e) => setDescription(e.target.value)} />
+        <label className="label" htmlFor="prod-description">Description</label>
+        <textarea id="prod-description" className="input" rows={4} value={description} onChange={(e) => setDescription(e.target.value)} />
       </div>
 
       <div className="grid grid-cols-3 gap-3">
         <div>
-          <label className="label">Price</label>
-          <input required type="number" min={0} step="0.01" className="input" value={price} onChange={(e) => setPrice(e.target.value)} />
+          <label className="label" htmlFor="prod-price">Price</label>
+          <input id="prod-price" required type="number" min={0} step="0.01" className="input" value={price} onChange={(e) => setPrice(e.target.value)} />
         </div>
         <div>
-          <label className="label">Discount price</label>
-          <input type="number" min={0} step="0.01" className="input" value={discountPrice} onChange={(e) => setDiscountPrice(e.target.value)} />
+          <label className="label" htmlFor="prod-discountPrice">Discount price</label>
+          <input id="prod-discountPrice" type="number" min={0} step="0.01" className="input" value={discountPrice} onChange={(e) => setDiscountPrice(e.target.value)} />
         </div>
         {!isEdit && (
           <div>
-            <label className="label">Initial stock</label>
-            <input type="number" min={0} className="input" value={initialStock} onChange={(e) => setInitialStock(e.target.value)} />
+            <label className="label" htmlFor="prod-initialStock">Initial stock</label>
+            <input id="prod-initialStock" type="number" min={0} className="input" value={initialStock} onChange={(e) => setInitialStock(e.target.value)} />
           </div>
         )}
       </div>
 
       <div className="grid grid-cols-3 gap-3">
         <div>
-          <label className="label">Category</label>
-          <select className="input" value={categoryId} onChange={(e) => setCategoryId(e.target.value)}>
+          <label className="label" htmlFor="prod-category">Category</label>
+          <select id="prod-category" className="input" value={categoryId} onChange={(e) => setCategoryId(e.target.value)}>
             <option value="">None</option>
             {categories.map((c) => (
               <option key={c.id} value={c.id}>
@@ -175,8 +175,8 @@ export default function ProductForm({ product }: { product?: Product }) {
           </select>
         </div>
         <div>
-          <label className="label">Brand</label>
-          <select className="input" value={brandId} onChange={(e) => setBrandId(e.target.value)}>
+          <label className="label" htmlFor="prod-brand">Brand</label>
+          <select id="prod-brand" className="input" value={brandId} onChange={(e) => setBrandId(e.target.value)}>
             <option value="">None</option>
             {brands.map((b) => (
               <option key={b.id} value={b.id}>
@@ -186,8 +186,8 @@ export default function ProductForm({ product }: { product?: Product }) {
           </select>
         </div>
         <div>
-          <label className="label">Status</label>
-          <select className="input" value={status} onChange={(e) => setStatus(e.target.value)}>
+          <label className="label" htmlFor="prod-status">Status</label>
+          <select id="prod-status" className="input" value={status} onChange={(e) => setStatus(e.target.value)}>
             <option value="DRAFT">Draft</option>
             <option value="PUBLISHED">Published</option>
             <option value="ARCHIVED">Archived</option>
@@ -196,7 +196,7 @@ export default function ProductForm({ product }: { product?: Product }) {
       </div>
 
       <div>
-        <label className="label">Images</label>
+        <span className="label">Images</span>
         <div className="space-y-2">
           {images.map((img, idx) => (
             <div key={idx} className="flex items-center gap-2">
@@ -228,7 +228,7 @@ export default function ProductForm({ product }: { product?: Product }) {
 
       {!isEdit && (
         <div>
-          <label className="label">Variants (optional)</label>
+          <span className="label">Variants (optional)</span>
           <p className="mb-2 text-xs text-gray-400">
             e.g. attributes: <code>color:Red,size:L</code>. Leave empty for a simple product with no variants.
           </p>

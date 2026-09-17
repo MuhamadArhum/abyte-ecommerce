@@ -46,21 +46,22 @@ export default function RegisterPage() {
         {error && <p className="text-sm text-red-600">{error}</p>}
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="label">First name</label>
-            <input required className="input" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+            <label className="label" htmlFor="firstName">First name</label>
+            <input id="firstName" required className="input" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
           </div>
           <div>
-            <label className="label">Last name</label>
-            <input required className="input" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+            <label className="label" htmlFor="lastName">Last name</label>
+            <input id="lastName" required className="input" value={lastName} onChange={(e) => setLastName(e.target.value)} />
           </div>
         </div>
         <div>
-          <label className="label">Email</label>
-          <input type="email" required className="input" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <label className="label" htmlFor="email">Email</label>
+          <input id="email" type="email" required className="input" value={email} onChange={(e) => setEmail(e.target.value)} />
         </div>
         <div>
-          <label className="label">Password</label>
+          <label className="label" htmlFor="password">Password</label>
           <input
+            id="password"
             type="password"
             required
             minLength={8}

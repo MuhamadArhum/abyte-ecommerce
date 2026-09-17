@@ -51,7 +51,7 @@ export class ProductsService {
       if (query.minPrice !== undefined) where.price.gte = query.minPrice;
       if (query.maxPrice !== undefined) where.price.lte = query.maxPrice;
     }
-    if (query.inStockOnly) {
+    if (query.isInStockOnly) {
       where.inventory = { quantity: { gt: 0 } };
     }
 

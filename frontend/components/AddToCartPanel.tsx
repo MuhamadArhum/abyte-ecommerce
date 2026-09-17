@@ -57,7 +57,7 @@ export default function AddToCartPanel({ product }: { product: Product }) {
     <div className="space-y-4">
       {product.variants.length > 0 && (
         <div>
-          <label className="label">Options</label>
+          <span className="label">Options</span>
           <div className="flex flex-wrap gap-2">
             {product.variants.map((v) => (
               <button
@@ -77,7 +77,7 @@ export default function AddToCartPanel({ product }: { product: Product }) {
       )}
 
       <div className="flex items-center gap-3">
-        <label className="label mb-0">Quantity</label>
+        <span className="label mb-0">Quantity</span>
         <div className="flex items-center rounded-md border border-gray-300">
           <button className="px-3 py-1" onClick={() => setQuantity((q) => Math.max(1, q - 1))}>
             −

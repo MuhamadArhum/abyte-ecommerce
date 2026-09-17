@@ -62,39 +62,39 @@ export default function AddressForm({
       {error && <p className="text-sm text-red-600">{error}</p>}
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="label">Full name</label>
-          <input required className="input" value={values.fullName} onChange={(e) => update('fullName', e.target.value)} />
+          <label className="label" htmlFor="addr-fullName">Full name</label>
+          <input id="addr-fullName" required className="input" value={values.fullName} onChange={(e) => update('fullName', e.target.value)} />
         </div>
         <div>
-          <label className="label">Phone</label>
-          <input required className="input" value={values.phone} onChange={(e) => update('phone', e.target.value)} />
+          <label className="label" htmlFor="addr-phone">Phone</label>
+          <input id="addr-phone" required className="input" value={values.phone} onChange={(e) => update('phone', e.target.value)} />
         </div>
       </div>
       <div>
-        <label className="label">Address line 1</label>
-        <input required className="input" value={values.line1} onChange={(e) => update('line1', e.target.value)} />
+        <label className="label" htmlFor="addr-line1">Address line 1</label>
+        <input id="addr-line1" required className="input" value={values.line1} onChange={(e) => update('line1', e.target.value)} />
       </div>
       <div>
-        <label className="label">Address line 2 (optional)</label>
-        <input className="input" value={values.line2} onChange={(e) => update('line2', e.target.value)} />
+        <label className="label" htmlFor="addr-line2">Address line 2 (optional)</label>
+        <input id="addr-line2" className="input" value={values.line2} onChange={(e) => update('line2', e.target.value)} />
       </div>
       <div className="grid grid-cols-3 gap-3">
         <div>
-          <label className="label">City</label>
-          <input required className="input" value={values.city} onChange={(e) => update('city', e.target.value)} />
+          <label className="label" htmlFor="addr-city">City</label>
+          <input id="addr-city" required className="input" value={values.city} onChange={(e) => update('city', e.target.value)} />
         </div>
         <div>
-          <label className="label">State</label>
-          <input required className="input" value={values.state} onChange={(e) => update('state', e.target.value)} />
+          <label className="label" htmlFor="addr-state">State</label>
+          <input id="addr-state" required className="input" value={values.state} onChange={(e) => update('state', e.target.value)} />
         </div>
         <div>
-          <label className="label">Postal code</label>
-          <input required className="input" value={values.postalCode} onChange={(e) => update('postalCode', e.target.value)} />
+          <label className="label" htmlFor="addr-postalCode">Postal code</label>
+          <input id="addr-postalCode" required className="input" value={values.postalCode} onChange={(e) => update('postalCode', e.target.value)} />
         </div>
       </div>
       <div>
-        <label className="label">Country</label>
-        <input required className="input" value={values.country} onChange={(e) => update('country', e.target.value)} />
+        <label className="label" htmlFor="addr-country">Country</label>
+        <input id="addr-country" required className="input" value={values.country} onChange={(e) => update('country', e.target.value)} />
       </div>
       <label className="flex items-center gap-2 text-sm text-gray-700">
         <input type="checkbox" checked={values.isDefault} onChange={(e) => update('isDefault', e.target.checked)} />

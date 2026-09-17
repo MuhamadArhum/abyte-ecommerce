@@ -13,6 +13,11 @@ out/
 coverage/
 *.tsbuildinfo
 
+# Playwright
+test-results/
+playwright-report/
+blob-report/
+
 # Logs
 npm-debug.log*
 yarn-debug.log*

@@ -21,7 +21,10 @@ test.describe('Customer purchase journey', () => {
     await page.getByRole('button', { name: 'Create account' }).click();
     await expect(page).toHaveURL('/');
 
-    await page.goto('/products');
+    // Filter to in-stock items only: the catalog may contain out-of-stock
+    // products (e.g. from concurrency/inventory tests), and picking an
+    // arbitrary "first" product without this filter makes the test flaky.
+    await page.goto('/products?inStockOnly=true');
     const firstProduct = page.locator('a[href^="/products/"]').first();
     await expect(firstProduct).toBeVisible();
     await firstProduct.click();

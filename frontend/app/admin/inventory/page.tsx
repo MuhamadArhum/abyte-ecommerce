@@ -21,9 +21,13 @@ export default function AdminInventoryPage() {
   const [error, setError] = useState<string | null>(null);
 
   async function load() {
-    setResult(
-      await api.get<PaginatedResponse<InventoryRow>>(`/inventory?limit=50&lowStockOnly=${lowStockOnly}`),
-    );
+    try {
+      setResult(
+        await api.get<PaginatedResponse<InventoryRow>>(`/inventory?limit=50&lowStockOnly=${lowStockOnly}`),
+      );
+    } catch (e) {
+      setError(e instanceof ApiError ? e.message : 'Could not load inventory');
+    }
   }
 
   useEffect(() => {

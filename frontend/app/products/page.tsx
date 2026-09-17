@@ -10,10 +10,11 @@ import { EmptyState } from '@/components/LoadingState';
 export const metadata = { title: 'Shop all products' };
 
 interface Props {
-  searchParams: Record<string, string | undefined>;
+  searchParams: Promise<Record<string, string | undefined>>;
 }
 
-export default async function ProductsPage({ searchParams }: Props) {
+export default async function ProductsPage({ searchParams: searchParamsPromise }: Props) {
+  const searchParams = await searchParamsPromise;
   const params = new URLSearchParams();
   const page = Number(searchParams.page ?? '1');
   params.set('page', String(page));

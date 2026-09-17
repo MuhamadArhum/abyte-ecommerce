@@ -40,8 +40,9 @@ function ResetPasswordForm() {
         <form onSubmit={handleSubmit} className="card space-y-4 p-6">
           {error && <p className="text-sm text-red-600">{error}</p>}
           <div>
-            <label className="label">New password</label>
+            <label className="label" htmlFor="newPassword">New password</label>
             <input
+              id="newPassword"
               type="password"
               required
               minLength={8}

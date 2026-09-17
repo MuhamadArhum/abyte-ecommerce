@@ -1,5 +1,5 @@
 import { Type } from 'class-transformer';
-import { IsBoolean, IsIn, IsInt, IsOptional, IsString, Min } from 'class-validator';
+import { IsIn, IsOptional, IsString, Min } from 'class-validator';
 import { PaginationDto } from '../../common/dto/pagination.dto';
 
 export class QueryProductsDto extends PaginationDto {
@@ -25,10 +25,17 @@ export class QueryProductsDto extends PaginationDto {
   @Min(0)
   maxPrice?: number;
 
+  // Kept as a string (not boolean) deliberately — see query-inventory.dto.ts
+  // for why: `enableImplicitConversion` coerces a `boolean`-typed field from
+  // the raw query string before any custom @Transform can see the original
+  // value, turning "false" into `true`.
   @IsOptional()
-  @Type(() => Boolean)
-  @IsBoolean()
-  inStockOnly?: boolean;
+  @IsIn(['true', 'false'])
+  inStockOnly?: string;
+
+  get isInStockOnly(): boolean {
+    return this.inStockOnly === 'true';
+  }
 
   @IsOptional()
   @IsIn(['price', 'createdAt', 'name'])

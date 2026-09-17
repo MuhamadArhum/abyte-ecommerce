@@ -195,7 +195,17 @@ export class AuthService {
     const passwordHash = await bcrypt.hash(newPassword, this.saltRounds);
     await this.prisma.user.update({
       where: { id: user.id },
-      data: { passwordHash, passwordResetToken: null, passwordResetExpires: null },
+      data: {
+        passwordHash,
+        passwordResetToken: null,
+        passwordResetExpires: null,
+        // Proving ownership via the emailed reset token is at least as strong
+        // as a correct login, so a reset must also clear any lockout —
+        // otherwise a user who reset their password stays locked out for the
+        // full lockout duration despite now having the correct credentials.
+        failedLoginAttempts: 0,
+        lockedUntil: null,
+      },
     });
     await this.logoutAll(user.id);
     return { reset: true };

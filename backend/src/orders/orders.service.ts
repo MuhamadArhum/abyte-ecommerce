@@ -64,6 +64,17 @@ export class OrdersService {
       throw new BadRequestException('Your cart is empty');
     }
 
+    // No real payment gateway (Stripe/PayPal) is integrated yet. Never mark an
+    // order PAID from a client-supplied paymentMethod alone — that would let a
+    // customer get free goods by simply claiming CARD/PAYPAL. Only COD (paid on
+    // delivery, confirmed by staff) is honestly supported until a gateway with
+    // server-verified payment confirmation is wired in.
+    if (dto.paymentMethod !== PaymentMethod.COD) {
+      throw new BadRequestException(
+        'Online card/PayPal payments are not yet available. Please select Cash on Delivery.',
+      );
+    }
+
     const shippingAddress = await this.prisma.address.findUnique({ where: { id: dto.shippingAddressId } });
     const billingAddress = await this.prisma.address.findUnique({ where: { id: dto.billingAddressId } });
     if (!shippingAddress || shippingAddress.userId !== userId) {
@@ -181,7 +192,7 @@ export class OrdersService {
           orderNumber,
           userId,
           status: OrderStatus.PENDING,
-          paymentStatus: dto.paymentMethod === PaymentMethod.COD ? PaymentStatus.UNPAID : PaymentStatus.PAID,
+          paymentStatus: PaymentStatus.UNPAID,
           paymentMethod: dto.paymentMethod,
           shippingAddressId: shippingAddress.id,
           billingAddressId: billingAddress.id,
@@ -198,7 +209,7 @@ export class OrdersService {
           payments: {
             create: {
               method: dto.paymentMethod,
-              status: dto.paymentMethod === PaymentMethod.COD ? PaymentStatus.UNPAID : PaymentStatus.PAID,
+              status: PaymentStatus.UNPAID,
               amount: grandTotal,
             },
           },

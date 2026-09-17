@@ -4,6 +4,7 @@ import { RoleName } from '@prisma/client';
 import { InventoryService } from './inventory.service';
 import { AdjustStockDto } from './dto/adjust-stock.dto';
 import { UpdateThresholdDto } from './dto/update-threshold.dto';
+import { QueryInventoryDto } from './dto/query-inventory.dto';
 import { Roles } from '../common/decorators/roles.decorator';
 import { CurrentUser, AuthenticatedUser } from '../common/decorators/current-user.decorator';
 import { PaginationDto } from '../common/dto/pagination.dto';
@@ -16,8 +17,8 @@ export class InventoryController {
   constructor(private readonly inventoryService: InventoryService) {}
 
   @Get()
-  findAll(@Query() pagination: PaginationDto, @Query('lowStockOnly') lowStockOnly?: string) {
-    return this.inventoryService.findAll(pagination, lowStockOnly === 'true');
+  findAll(@Query() query: QueryInventoryDto) {
+    return this.inventoryService.findAll(query, query.isLowStockOnly);
   }
 
   @Get(':productId')

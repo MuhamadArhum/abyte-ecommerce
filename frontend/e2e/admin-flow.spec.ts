@@ -27,12 +27,12 @@ test.describe('Admin management journey', () => {
     await page.goto('/admin/categories');
     await page.getByLabel('Name').fill(categoryName);
     await page.getByRole('button', { name: 'Add category' }).click();
-    await expect(page.getByText(categoryName)).toBeVisible();
+    await expect(page.getByRole('cell', { name: categoryName, exact: true })).toBeVisible();
 
     await page.goto('/admin/products/new');
     await page.getByLabel('Name').fill(productName);
     await page.getByLabel('SKU').fill(`E2E-${Date.now()}`);
-    await page.getByLabel('Price').fill('29.99');
+    await page.getByLabel('Price', { exact: true }).fill('29.99');
     await page.getByLabel('Initial stock').fill('25');
     await page.getByLabel('Status').selectOption('PUBLISHED');
     await page.getByRole('button', { name: 'Create product' }).click();

@@ -64,8 +64,8 @@ export default function AdminBrandsPage() {
 
       <form onSubmit={handleCreate} className="card mb-6 flex items-end gap-3 p-4">
         <div>
-          <label className="label">Name</label>
-          <input required className="input" value={name} onChange={(e) => setName(e.target.value)} />
+          <label className="label" htmlFor="brand-name">Name</label>
+          <input id="brand-name" required className="input" value={name} onChange={(e) => setName(e.target.value)} />
         </div>
         <button className="btn-primary" type="submit">
           Add brand

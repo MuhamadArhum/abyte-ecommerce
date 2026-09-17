@@ -10,7 +10,10 @@ import type { Address, Order } from '@/types';
 import AddressForm, { AddressFormValues } from '@/components/AddressForm';
 import { EmptyState } from '@/components/LoadingState';
 
-type PaymentMethod = 'COD' | 'CARD' | 'PAYPAL';
+// Only COD is wired up on the backend today — there is no real payment
+// gateway integration, so CARD/PAYPAL are intentionally not offered here
+// (see orders.service.ts#checkout for the server-side enforcement).
+type PaymentMethod = 'COD';
 
 export default function CheckoutPage() {
   const { user, hydrated } = useAuthStore();
@@ -22,7 +25,7 @@ export default function CheckoutPage() {
   const [billingId, setBillingId] = useState<number | null>(null);
   const [sameAsShipping, setSameAsShipping] = useState(true);
   const [showNewAddress, setShowNewAddress] = useState(false);
-  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('COD');
+  const paymentMethod: PaymentMethod = 'COD';
   const [couponCode, setCouponCode] = useState('');
   const [discount, setDiscount] = useState(0);
   const [couponError, setCouponError] = useState<string | null>(null);
@@ -139,6 +142,7 @@ export default function CheckoutPage() {
               <AddressForm
                 onSubmit={handleAddAddress}
                 onCancel={addresses.length > 0 ? () => setShowNewAddress(false) : undefined}
+                submitLabel="Add address"
               />
             )}
           </section>
@@ -172,18 +176,14 @@ export default function CheckoutPage() {
           <section className="card p-5">
             <h2 className="mb-3 font-semibold text-gray-900">Payment method</h2>
             <div className="space-y-2 text-sm">
-              {(['COD', 'CARD', 'PAYPAL'] as PaymentMethod[]).map((method) => (
-                <label key={method} className="flex items-center gap-2">
-                  <input
-                    type="radio"
-                    name="payment"
-                    checked={paymentMethod === method}
-                    onChange={() => setPaymentMethod(method)}
-                  />
-                  {method === 'COD' ? 'Cash on Delivery' : method === 'CARD' ? 'Credit / Debit Card' : 'PayPal'}
-                </label>
-              ))}
+              <label className="flex items-center gap-2">
+                <input type="radio" name="payment" checked readOnly />
+                Cash on Delivery
+              </label>
             </div>
+            <p className="mt-2 text-xs text-gray-400">
+              Card and PayPal payments are not available yet.
+            </p>
           </section>
         </div>
 
